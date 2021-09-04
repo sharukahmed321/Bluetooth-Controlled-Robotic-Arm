@@ -1,0 +1,136 @@
+String readString;
+int x=90, y=90, z=90, p=90;
+#include <Servo.h>
+Servo myservoa, myservob, myservoc, myservod;
+void setup()
+{
+  Serial.begin(9600);
+  myservoa.attach(3);
+  myservob.attach(5);
+  myservoc.attach(6);
+  myservod.attach(9);
+  myservoa.write(x);
+  myservob.write(y);
+  myservoc.write(z);
+  myservod.write(p);
+}
+void loop()
+{
+  if (Serial.available())  
+  {
+    char m = Serial.read();
+    switch(m)
+    {
+      case'a':
+        x-=5;
+        if (x>180)
+        {
+          x=180;
+        }else if(x<0)
+        {
+          x=0;
+        }
+        else
+        {
+          myservoa.write(x);
+        }
+        break;
+      case's':
+        x+=5;
+        if (x>180)
+        {
+          x=180;
+        }else if(x<0)
+        {
+          x=0;
+        }
+        myservoa.write(x);
+        break;
+     case'z':
+        y-=5;
+        if (y>180)
+        {
+          y=180;
+        }else if(y<0)
+        {
+          y=0;
+        }
+        else
+        {
+          myservob.write(y);
+        }
+        break;
+       case'x':
+        y+=5;
+        if (y>180)
+        {
+          y=180;
+        }else if(y<0)
+        {
+          y=0;
+        }
+        else
+        {
+          myservob.write(y);
+        }
+        break;
+     case'q':
+        z-=5;
+        if (z>180)
+        {
+          z=180;
+        }else if(z<0)
+        {
+          z=0;
+        }
+        else
+        {
+          myservoc.write(z);
+        }
+        break;
+       case'w':
+        z+=5;
+        if (z>180)
+        {
+          z=180;
+        }else if(z<0)
+        {
+          z=0;
+        }
+        else
+        {
+          myservoc.write(z);
+        }
+        break;
+     case'1':
+        p-=5;
+        if (p>180)
+        {
+          p=180;
+        }else if(p<0)
+        {
+          p=0;
+        }
+        else
+        {
+          myservod.write(p);
+        }
+        break;
+       case'2':
+        p+=5;
+        if (p>180)
+        {
+          p=180;
+        }else if(p<0)
+        {
+          p=0;
+        }
+        else
+        {
+          myservod.write(p);
+        }
+        break;
+    }
+  }
+}
+    
